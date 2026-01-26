@@ -15,29 +15,30 @@
 </head>
 <body>
     <!-- ШАПКА с адаптивной версией -->
-<header class="header">
-    <div class="container header-container">
-        <div class="logo">
-            <img src="images/бк.png" alt="Конфиденс Код - Бухгалтерские услуги">
-        </div>
-        <div class="header-contacts">
-            <div class="phone-numbers">
-                <!-- Основной номер - всегда виден -->
-                <a href="tel:88003006224" class="phone phone-main">
-                    <i class="fas fa-phone"></i> 8 800 300 62 24
-                </a>
-                
-                <!-- Второй номер - скрыт на мобильных -->
-                <div class="additional-contacts">
-                    <a href="tel:84952552132" class="phone phone-secondary">
-                        <i class="fas fa-phone"></i> 8 495 255 21 32
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="images/бк.png" alt="Конфиденс Код - Бухгалтерские услуги">
+            </div>
+            <div class="header-contacts">
+                <div class="phone-numbers">
+                    <!-- Основной номер - всегда виден -->
+                    <a href="tel:88003006224" class="phone phone-main">
+                        <i class="fas fa-phone"></i> 8 800 300 62 24
                     </a>
-                    <span class="more-numbers mobile-only">еще...</span>
+                    
+                    <!-- Второй номер - скрыт на мобильных -->
+                    <div class="additional-contacts">
+                        <a href="tel:84952552132" class="phone phone-secondary">
+                            <i class="fas fa-phone"></i> 8 495 255 21 32
+                        </a>
+                        <span class="more-numbers mobile-only">еще...</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
+    
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero">
         <div class="container hero-container">
@@ -67,6 +68,7 @@
             </div>
         </div>
     </section>
+    
     <!-- БЛОК УСЛУГ -->
     <section class="services">
         <div class="container">
@@ -181,67 +183,60 @@
         </div>
     </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const moreNumbersBtn = document.querySelector('.more-numbers.mobile-only');
-    const secondaryPhone = document.querySelector('.phone-secondary');
-    const additionalContacts = document.querySelector('.additional-contacts');
-    
-    if (moreNumbersBtn && secondaryPhone && additionalContacts) {
-        // На мобильных делаем дополнительные контакты флекс-колонной
-        if (window.innerWidth <= 768) {
-            additionalContacts.style.display = 'flex';
-            additionalContacts.style.flexDirection = 'column';
-            additionalContacts.style.alignItems = 'center';
-            secondaryPhone.style.display = 'none';
-            moreNumbersBtn.style.order = '1';
-            secondaryPhone.style.order = '2';
-            secondaryPhone.style.marginTop = '8px';
-        }
+    <script>
+    // ФУНКЦИОНАЛ КНОПКИ "ЕЩЁ" НА ТЕЛЕФОНАХ
+    document.addEventListener('DOMContentLoaded', function() {
+        const moreBtn = document.querySelector('.more-numbers.mobile-only');
+        const secondPhone = document.querySelector('.phone-secondary');
         
-        moreNumbersBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        if (moreBtn && secondPhone) {
+            // Проверка мобильного устройства
+            const isMobile = () => window.innerWidth <= 768;
             
-            if (window.innerWidth <= 768) {
-                if (secondaryPhone.style.display === 'none') {
+            // Изначальная настройка
+            if (isMobile()) {
+                secondPhone.style.display = 'none';
+            }
+            
+            // Клик по кнопке "ещё"
+            moreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (!isMobile()) return; // Работает только на мобильных
+                
+                if (secondPhone.style.display === 'none') {
                     // Показываем номер
-                    secondaryPhone.style.display = 'flex';
+                    secondPhone.style.display = 'flex';
+                    secondPhone.classList.add('show');
                     this.textContent = 'скрыть';
                 } else {
                     // Скрываем номер
-                    secondaryPhone.style.display = 'none';
+                    secondPhone.style.display = 'none';
+                    secondPhone.classList.remove('show');
                     this.textContent = 'еще...';
                 }
-            }
-        });
-        
-        // При изменении размера окна
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                // На ПК сбрасываем стили
-                additionalContacts.style.display = '';
-                additionalContacts.style.flexDirection = '';
-                additionalContacts.style.alignItems = '';
-                secondaryPhone.style.display = 'flex';
-                secondaryPhone.style.order = '';
-                secondaryPhone.style.marginTop = '';
-                moreNumbersBtn.style.order = '';
-                moreNumbersBtn.textContent = 'еще...';
-            } else {
-                // На мобильных применяем стили
-                additionalContacts.style.display = 'flex';
-                additionalContacts.style.flexDirection = 'column';
-                additionalContacts.style.alignItems = 'center';
-                secondaryPhone.style.display = 'none';
-                secondaryPhone.style.order = '2';
-                secondaryPhone.style.marginTop = '8px';
-                moreNumbersBtn.style.order = '1';
-                moreNumbersBtn.textContent = 'еще...';
-            }
-        });
-    }
-});
-</script>
+            });
+            
+            // При изменении размера окна
+            window.addEventListener('resize', function() {
+                if (isMobile()) {
+                    // На мобильных
+                    if (moreBtn.textContent === 'скрыть') {
+                        secondPhone.style.display = 'flex';
+                        secondPhone.classList.add('show');
+                    } else {
+                        secondPhone.style.display = 'none';
+                        secondPhone.classList.remove('show');
+                    }
+                } else {
+                    // На ПК - всегда показываем номер, скрываем кнопку
+                    secondPhone.style.display = 'flex';
+                    secondPhone.classList.remove('show');
+                    moreBtn.textContent = 'еще...';
+                }
+            });
+        }
+    });
+    </script>
 </body>
 </html>
