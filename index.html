@@ -14,26 +14,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ШАПКА -->
-    <header class="header">
-        <div class="container header-container">
-            <div class="logo">
-                <img src="images/бк.png" alt="Конфиденс Код - Бухгалтерские услуги">
-            </div>
-            <div class="header-contacts">
-                <!-- Оба номера телефона -->
-                <div class="phone-numbers">
-                    <a href="tel:88003006224" class="phone">
-                        <i class="fas fa-phone"></i> 8 800 300 62 24
-                    </a>
-                    <a href="tel:84952552132" class="phone">
+    <!-- ШАПКА с адаптивной версией -->
+<header class="header">
+    <div class="container header-container">
+        <div class="logo">
+            <img src="images/бк.png" alt="Конфиденс Код - Бухгалтерские услуги">
+        </div>
+        <div class="header-contacts">
+            <div class="phone-numbers">
+                <!-- Основной номер - всегда виден -->
+                <a href="tel:88003006224" class="phone phone-main">
+                    <i class="fas fa-phone"></i> 8 800 300 62 24
+                </a>
+                
+                <!-- Второй номер - скрыт на мобильных -->
+                <div class="additional-contacts">
+                    <a href="tel:84952552132" class="phone phone-secondary">
                         <i class="fas fa-phone"></i> 8 495 255 21 32
                     </a>
+                    <span class="more-numbers mobile-only">еще...</span>
                 </div>
             </div>
         </div>
-    </header>
-
+    </div>
+</header>
     <!-- ГЛАВНЫЙ ЭКРАН -->
     <section class="hero">
         <div class="container hero-container">
@@ -59,7 +63,7 @@
             </div>
             
             <div class="hero-image">
-                <img src="images/final.jpg" alt="Бухгалтерские услуги">
+                <img src="images/fn.jpg" alt="Бухгалтерские услуги">
             </div>
         </div>
     </section>
@@ -168,6 +172,7 @@
                 <div class="form-contacts">
                     <h3>Контакты</h3>
                     <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Адрес офиса</strong><br>4-й Сыромятнический пер., 3/5с4, Москва</p>
                         <p><i class="fas fa-clock"></i> <strong>Режим работы</strong><br>Пн-Пт: 9:00-19:00</p>
                         <p><i class="fas fa-envelope"></i> <strong>Электронная почта</strong><br>info@glavbuh2000.ru</p>
                     </div>
