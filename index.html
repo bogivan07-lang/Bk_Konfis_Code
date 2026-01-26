@@ -180,5 +180,48 @@
             </div>
         </div>
     </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const moreNumbersBtn = document.querySelector('.more-numbers.mobile-only');
+    const secondaryPhone = document.querySelector('.phone-secondary');
+    
+    if (moreNumbersBtn && secondaryPhone) {
+        // Изначально скрываем второй номер на мобильных
+        if (window.innerWidth <= 768) {
+            secondaryPhone.style.display = 'none';
+        }
+        
+        moreNumbersBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (window.innerWidth <= 768) {
+                if (secondaryPhone.style.display === 'none') {
+                    // Показываем номер
+                    secondaryPhone.style.display = 'flex';
+                    this.textContent = 'скрыть';
+                } else {
+                    // Скрываем номер
+                    secondaryPhone.style.display = 'none';
+                    this.textContent = 'еще...';
+                }
+            }
+        });
+        
+        // При изменении размера окна
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                // На ПК всегда показываем
+                secondaryPhone.style.display = 'flex';
+                moreNumbersBtn.textContent = 'еще...';
+            } else {
+                // На мобильных скрываем
+                secondaryPhone.style.display = 'none';
+                moreNumbersBtn.textContent = 'еще...';
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>
