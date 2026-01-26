@@ -185,15 +185,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     const moreNumbersBtn = document.querySelector('.more-numbers.mobile-only');
     const secondaryPhone = document.querySelector('.phone-secondary');
+    const additionalContacts = document.querySelector('.additional-contacts');
     
-    if (moreNumbersBtn && secondaryPhone) {
-        // Изначально скрываем второй номер на мобильных
+    if (moreNumbersBtn && secondaryPhone && additionalContacts) {
+        // На мобильных делаем дополнительные контакты флекс-колонной
         if (window.innerWidth <= 768) {
+            additionalContacts.style.display = 'flex';
+            additionalContacts.style.flexDirection = 'column';
+            additionalContacts.style.alignItems = 'center';
             secondaryPhone.style.display = 'none';
+            moreNumbersBtn.style.order = '1';
+            secondaryPhone.style.order = '2';
+            secondaryPhone.style.marginTop = '8px';
         }
         
         moreNumbersBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             
             if (window.innerWidth <= 768) {
                 if (secondaryPhone.style.display === 'none') {
@@ -211,12 +219,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // При изменении размера окна
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                // На ПК всегда показываем
+                // На ПК сбрасываем стили
+                additionalContacts.style.display = '';
+                additionalContacts.style.flexDirection = '';
+                additionalContacts.style.alignItems = '';
                 secondaryPhone.style.display = 'flex';
+                secondaryPhone.style.order = '';
+                secondaryPhone.style.marginTop = '';
+                moreNumbersBtn.style.order = '';
                 moreNumbersBtn.textContent = 'еще...';
             } else {
-                // На мобильных скрываем
+                // На мобильных применяем стили
+                additionalContacts.style.display = 'flex';
+                additionalContacts.style.flexDirection = 'column';
+                additionalContacts.style.alignItems = 'center';
                 secondaryPhone.style.display = 'none';
+                secondaryPhone.style.order = '2';
+                secondaryPhone.style.marginTop = '8px';
+                moreNumbersBtn.style.order = '1';
                 moreNumbersBtn.textContent = 'еще...';
             }
         });
