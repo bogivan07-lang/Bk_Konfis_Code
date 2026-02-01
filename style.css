@@ -522,7 +522,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
+/* =============== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ =============== */
 @media (max-width: 768px) {
     /* ШАПКА НА ТЕЛЕФОНАХ */
     .header {
@@ -592,26 +592,26 @@ body {
         gap: 5px;
     }
     
-    /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ */
+    /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ - ИЗМЕНЕНИЯ ТОЛЬКО ЗДЕСЬ */
     .hero {
-        padding: 20px 0 35px;
+        padding: 60px 0 35px; /* УВЕЛИЧИЛИ верхний отступ с 20px до 60px */
         min-height: auto;
     }
     
     .hero-container {
         gap: 20px;
         padding-top: 0;
-        margin-top: -30px;
+        margin-top: 0; /* УБРАЛИ: margin-top: -30px; */
         flex-direction: column;
         text-align: center;
     }
     
     .hero-content {
-        margin-top: -50px;
+        margin-top: 0; /* УБРАЛИ: margin-top: -50px; */
     }
     
     .hero-image {
-        margin-top: -40px;
+        margin-top: 0; /* УБРАЛИ: margin-top: -40px; */
         margin-bottom: 5px;
         order: -1;
     }
@@ -1127,3 +1127,4 @@ body {
         max-height: 75vh;
     }
 }
+
