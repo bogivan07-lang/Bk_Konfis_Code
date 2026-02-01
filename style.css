@@ -28,32 +28,15 @@ body {
     padding: 0 20px;
 }
 
-/* ШАПКА - ФИКСИРОВАННАЯ ВЕРСИЯ  */
+/* ШАПКА  */
 .header {
     background-color: var(--white);
-    padding: 15px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px var(--shadow);
-    transition: all 0.3s ease;
-}
-
-/* Когда шапка должна быть строго фиксированной (для мобильных при открытом меню) */
-.header.fixed {
-    position: fixed;
-    width: 100%;
-    animation: slideDown 0.3s ease;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
 }
 
 .header-container {
@@ -67,10 +50,9 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
-    position: relative;
-    z-index: 1001;
 }
 
+/* ЛОГОТИП НА ПК - ОСТАВЛЯЕМ БОЛЬШИМ */
 .logo img {
     height: 60px; 
     width: auto;
@@ -798,34 +780,32 @@ body {
 
 /* =============== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ =============== */
 @media (max-width: 768px) {
-    /* ШАПКА НА ТЕЛЕФОНАХ - ФИКСИРОВАННАЯ */
+    /* ШАПКА НА ТЕЛЕФОНАХ - ТОЛЬКО ЗДЕСЬ УМЕНЬШАЕМ ЛОГОТИП */
     .header {
         padding: 12px 0;
-        min-height: 65px;
     }
     
     .header-container {
         padding: 0 15px;
-        position: relative;
     }
     
+    /* УМЕНЬШАЕМ ЛОГОТИП ТОЛЬКО НА МОБИЛЬНЫХ */
     .logo img {
-        height: 48px;
-    }
-    
-    /* Контакты - выравниваем по правому краю */
-    .header-contacts {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1002;
+        height: 45px; /* На ПК 60px, на мобильных 45px */
     }
     
     .phone-numbers {
-        flex-direction: row;
-        align-items: center;
+        align-items: flex-end;
+    }
+    
+    .phone {
+        font-size: 0.95rem;
+        padding: 6px 10px;
         gap: 8px;
+    }
+    
+    .phone i {
+        font-size: 0.9rem;
     }
     
     /* Кнопка "ещё" - показываем только на телефонах */
@@ -834,14 +814,12 @@ body {
         font-size: 0.8rem;
         color: var(--primary-blue);
         background: rgba(26, 54, 93, 0.1);
-        padding: 6px 12px;
+        padding: 5px 10px;
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.3s ease;
-        white-space: nowrap;
-        border: 1px solid rgba(26, 54, 93, 0.2);
         margin-left: 5px;
-        font-weight: 500;
+        margin-top: 3px;
     }
     
     .more-numbers.mobile-only:hover {
@@ -854,22 +832,22 @@ body {
         position: absolute;
         top: 100%;
         right: 0;
-        margin-top: 10px;
+        margin-top: 8px;
         background: var(--white) !important;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
-        padding: 12px 15px !important;
-        min-width: 180px;
+        padding: 10px 15px !important;
+        min-width: 170px;
         z-index: 1003;
         border: 1px solid var(--border);
-        animation: fadeInUp 0.3s ease;
+        animation: fadeIn 0.3s ease;
     }
     
     .phone-secondary.show {
         display: flex !important;
     }
     
-    @keyframes fadeInUp {
+    @keyframes fadeIn {
         from {
             opacity: 0;
             transform: translateY(-10px);
@@ -887,12 +865,17 @@ body {
         white-space: nowrap;
     }
     
-    /* Дополнительный отступ для контента на мобильных */
-    .hero {
-        padding-top: 80px;
+    /* Дополнительный контейнер для контактов */
+    .additional-contacts {
+        position: relative;
     }
     
     /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ */
+    .hero {
+        padding: 50px 0 40px;
+        min-height: auto;
+    }
+    
     .hero-container {
         gap: 30px;
         padding-top: 0;
@@ -920,13 +903,13 @@ body {
     }
     
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
         margin-bottom: 8px;
         line-height: 1.3;
     }
     
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         margin-bottom: 10px;
     }
     
@@ -1063,39 +1046,39 @@ body {
 @media (max-width: 375px) {
     .header {
         padding: 10px 0;
-        min-height: 60px;
     }
     
+    /* ЕЩЕ БОЛЬШЕ УМЕНЬШАЕМ ЛОГОТИП НА ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНАХ */
     .logo img {
-        height: 42px;
+        height: 40px; /* На очень маленьких экранах - 40px */
     }
     
     .phone-main {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         padding: 5px 8px;
     }
     
     .more-numbers.mobile-only {
         font-size: 0.75rem;
-        padding: 5px 10px;
+        padding: 4px 8px;
     }
     
     .phone-secondary {
-        min-width: 160px;
-        padding: 10px 12px !important;
+        min-width: 150px;
+        padding: 8px 12px !important;
     }
     
     /* На очень маленьких экранах скрываем иконку телефона */
     .phone i {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
     
     .hero {
-        padding-top: 70px;
+        padding: 40px 0 30px;
     }
     
     .hero h1 {
-        font-size: 1.6rem;
+        font-size: 1.7rem;
     }
     
     .hero-image img {
@@ -1116,11 +1099,10 @@ body {
 @media (max-width: 768px) and (orientation: landscape) {
     .header {
         padding: 8px 0;
-        min-height: 55px;
     }
     
     .hero {
-        padding: 25px 0 35px;
+        padding: 30px 0 25px;
     }
     
     .hero-container {
@@ -1145,7 +1127,7 @@ body {
     }
     
     .hero h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     .hero-features {
@@ -1153,14 +1135,14 @@ body {
     }
     
     .phone-secondary {
-        min-width: 160px;
+        min-width: 150px;
     }
 }
 
 /* ВЫСОКИЕ ТЕЛЕФОНЫ */
 @media (max-width: 768px) and (min-height: 800px) {
     .hero {
-        padding: 60px 0 70px;
+        padding: 60px 0 50px;
     }
     
     .hero-image img {
@@ -1168,7 +1150,7 @@ body {
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
     }
 }
 
