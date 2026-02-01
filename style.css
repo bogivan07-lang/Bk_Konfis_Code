@@ -31,7 +31,7 @@ body {
 /* ШАПКА  */
 .header {
     background-color: var(--white);
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
@@ -52,7 +52,6 @@ body {
     gap: 15px;
 }
 
-/* ЛОГОТИП НА ПК - ОСТАВЛЯЕМ БОЛЬШИМ */
 .logo img {
     height: 60px; 
     width: auto;
@@ -105,7 +104,7 @@ body {
     display: none;
 }
 
-/* ГЛАВНЫЙ ЭКРАН  */
+/* ОБЩИЕ СТИЛИ ГЕРОЯ (переопределяются inline стилями для компактной версии) */
 .hero {
     background: linear-gradient(135deg, var(--beige) 0%, var(--light-blue) 100%);
     padding: 40px 0;
@@ -116,19 +115,6 @@ body {
     overflow: hidden;
 }
 
-.hero:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
-    z-index: 0;
-}
-
 .hero-container {
     display: flex;
     flex-wrap: wrap;
@@ -137,83 +123,18 @@ body {
     gap: 60px;
     position: relative;
     z-index: 1;
-    padding-top: 0;
-    margin-top: -20px;
 }
 
 .hero-content {
     flex: 1;
     min-width: 300px;
     max-width: 600px;
-    padding-top: 0;
-    margin-top: -40px;
-}
-
-.hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    color: var(--primary-blue);
-    background: linear-gradient(135deg, var(--primary-blue) 0%, #4c51bf 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 1.4rem;
-    color: var(--text-medium);
-    margin-bottom: 15px;
-    font-weight: 500;
-    padding-left: 5px;
-}
-
-.hero-description {
-    font-size: 1.1rem;
-    color: var(--text-medium);
-    margin-bottom: 20px;
-    max-width: 500px;
-    line-height: 1.8;
-    padding-left: 5px;
-}
-
-.hero-features {
-    margin: 20px 0 30px;
-    background: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px var(--shadow);
-    border-left: 4px solid var(--primary-blue);
-}
-
-.feature {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 12px;
-    color: var(--text-dark);
-    font-weight: 500;
-    font-size: 1.05rem;
-}
-
-.feature:last-child {
-    margin-bottom: 0;
-}
-
-.feature i {
-    color: var(--primary-blue);
-    font-size: 1.2rem;
-    flex-shrink: 0;
 }
 
 .hero-image {
     flex: 1;
     min-width: 300px;
     text-align: center;
-    position: relative;
-    margin-top: -20px;
 }
 
 .hero-image img {
@@ -221,12 +142,6 @@ body {
     height: auto;
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    transform: perspective(1000px) rotateY(-5deg);
-    transition: transform 0.5s ease;
-}
-
-.hero-image:hover img {
-    transform: perspective(1000px) rotateY(0deg);
 }
 
 /* КНОПКИ */
@@ -780,7 +695,7 @@ body {
 
 /* =============== АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ =============== */
 @media (max-width: 768px) {
-    /* ШАПКА НА ТЕЛЕФОНАХ - ТОЛЬКО ЗДЕСЬ УМЕНЬШАЕМ ЛОГОТИП */
+    /* ШАПКА НА ТЕЛЕФОНАХ */
     .header {
         padding: 12px 0;
     }
@@ -791,7 +706,7 @@ body {
     
     /* УМЕНЬШАЕМ ЛОГОТИП ТОЛЬКО НА МОБИЛЬНЫХ */
     .logo img {
-        height: 45px; /* На ПК 60px, на мобильных 45px */
+        height: 45px;
     }
     
     .phone-numbers {
@@ -863,81 +778,6 @@ body {
         font-size: 0.95rem;
         padding: 6px 10px;
         white-space: nowrap;
-    }
-    
-    /* Дополнительный контейнер для контактов */
-    .additional-contacts {
-        position: relative;
-    }
-    
-    /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ */
-    .hero {
-        padding: 50px 0 40px;
-        min-height: auto;
-    }
-    
-    .hero-container {
-        gap: 30px;
-        padding-top: 0;
-        margin-top: 0;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-content {
-        margin-top: 0;
-    }
-    
-    .hero-image {
-        margin-top: 0;
-        margin-bottom: 5px;
-        order: -1;
-    }
-    
-    .hero-image img {
-        max-height: 220px;
-        width: auto;
-        margin: 0 auto;
-        transform: none;
-        border-radius: 12px;
-    }
-    
-    .hero h1 {
-        font-size: 1.9rem;
-        margin-bottom: 8px;
-        line-height: 1.3;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-        margin-bottom: 15px;
-        line-height: 1.6;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .hero-features {
-        margin: 15px 0 20px;
-        padding: 15px;
-        text-align: left;
-    }
-    
-    .feature {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
-    }
-    
-    .btn-large {
-        padding: 16px 30px;
-        font-size: 1rem;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
     }
     
     /* УСЛУГИ НА ТЕЛЕФОНАХ */
@@ -1017,9 +857,6 @@ body {
     }
     
     /* Отключаем сложные анимации на мобильных для производительности */
-    .hero-image:hover img,
-    .service-category:hover,
-    .service-item:hover,
     .btn:hover {
         transform: none !important;
     }
@@ -1048,9 +885,8 @@ body {
         padding: 10px 0;
     }
     
-    /* ЕЩЕ БОЛЬШЕ УМЕНЬШАЕМ ЛОГОТИП НА ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНАХ */
     .logo img {
-        height: 40px; /* На очень маленьких экранах - 40px */
+        height: 40px;
     }
     
     .phone-main {
@@ -1066,91 +902,6 @@ body {
     .phone-secondary {
         min-width: 150px;
         padding: 8px 12px !important;
-    }
-    
-    /* На очень маленьких экранах скрываем иконку телефона */
-    .phone i {
-        font-size: 0.85rem;
-    }
-    
-    .hero {
-        padding: 40px 0 30px;
-    }
-    
-    .hero h1 {
-        font-size: 1.7rem;
-    }
-    
-    .hero-image img {
-        max-height: 200px;
-    }
-    
-    .btn-large {
-        padding: 15px 25px;
-        font-size: 0.95rem;
-    }
-    
-    .service-category {
-        padding: 20px;
-    }
-}
-
-/* ЛАНДШАФТНАЯ ОРИЕНТАЦИЯ */
-@media (max-width: 768px) and (orientation: landscape) {
-    .header {
-        padding: 8px 0;
-    }
-    
-    .hero {
-        padding: 30px 0 25px;
-    }
-    
-    .hero-container {
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
-        text-align: left;
-    }
-    
-    .hero-image {
-        flex: 0 0 35%;
-        order: 0;
-        margin-bottom: 0;
-    }
-    
-    .hero-image img {
-        max-height: 180px;
-    }
-    
-    .hero-content {
-        flex: 1;
-    }
-    
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-    
-    .hero-features {
-        margin: 20px 0;
-    }
-    
-    .phone-secondary {
-        min-width: 150px;
-    }
-}
-
-/* ВЫСОКИЕ ТЕЛЕФОНЫ */
-@media (max-width: 768px) and (min-height: 800px) {
-    .hero {
-        padding: 60px 0 50px;
-    }
-    
-    .hero-image img {
-        max-height: 250px;
-    }
-    
-    .hero h1 {
-        font-size: 2.1rem;
     }
 }
 
