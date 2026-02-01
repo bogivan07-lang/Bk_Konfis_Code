@@ -522,324 +522,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 768px) {
-    /* ШАПКА НА ТЕЛЕФОНАХ */
-    .header {
-        padding: 10px 0;
-        min-height: 60px;
-    }
-    
-    .header-container {
-        padding: 0 15px;
-    }
-    
-    .logo img {
-        height: 45px;
-    }
-    
-    .phone-numbers {
-        align-items: flex-end;
-    }
-    
-    .phone {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
-    
-    .phone i {
-        font-size: 12px;
-    }
-    
-    /* Кнопка "ещё" - показываем только на телефонах */
-    .more-numbers.mobile-only {
-        display: inline-block !important;
-        font-size: 0.85rem;
-        color: var(--text-light);
-        margin-left: 0;
-        font-style: italic;
-        cursor: pointer;
-        padding: 4px 10px;
-        background: rgba(26, 54, 93, 0.05);
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        margin-top: 5px;
-    }
-    
-    .more-numbers.mobile-only:hover {
-        background: rgba(26, 54, 93, 0.1);
-    }
-    
-    /* Второй номер - управляется через JavaScript */
-    .phone-secondary {
-        display: none !important;
-        margin-top: 8px;
-        background: rgba(26, 54, 93, 0.08) !important;
-        border-radius: 6px !important;
-        padding: 8px 12px !important;
-        animation: fadeIn 0.3s ease !important;
-    }
-    
-    .phone-secondary.show {
-        display: flex !important;
-    }
-    
-    /* Контейнер для дополнительных контактов */
-    .additional-contacts {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 5px;
-    }
-    
-    /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ */
-    .hero {
-        padding: 20px 0 35px;
-        min-height: auto;
-    }
-    
-    .hero-container {
-        gap: 20px;
-        padding-top: 0;
-        margin-top: -30px;
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .hero-content {
-        margin-top: -50px;
-    }
-    
-    .hero-image {
-        margin-top: -40px;
-        margin-bottom: 5px;
-        order: -1;
-    }
-    
-    .hero-image img {
-        max-height: 220px;
-        width: auto;
-        margin: 0 auto;
-        transform: none;
-        border-radius: 12px;
-    }
-    
-    .hero h1 {
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-        line-height: 1.3;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-    }
-    
-    .hero-description {
-        font-size: 1rem;
-        margin-bottom: 15px;
-        line-height: 1.6;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .hero-features {
-        margin: 15px 0 20px;
-        padding: 15px;
-        text-align: left;
-    }
-    
-    .feature {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
-    }
-    
-    .btn-large {
-        padding: 16px 30px;
-        font-size: 1rem;
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
-    }
-    
-    /* УСЛУГИ НА ТЕЛЕФОНАХ */
-    .services {
-        padding: 60px 0;
-    }
-    
-    .section-title {
-        font-size: 1.9rem;
-        margin-bottom: 40px;
-    }
-    
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-    
-    .service-category {
-        padding: 25px;
-    }
-    
-    .service-item {
-        padding: 20px;
-    }
-    
-    .service-item h4 {
-        font-size: 1.1rem;
-    }
-    
-    /* ФОРМА НА ТЕЛЕФОНАХ */
-    .contact-form-section {
-        padding: 60px 0;
-    }
-    
-    .form-container {
-        grid-template-columns: 1fr;
-        padding: 30px 25px;
-        gap: 35px;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        padding: 16px;
-        font-size: 16px;
-    }
-    
-    /* Отключаем сложные анимации на мобильных для производительности */
-    .hero-image:hover img,
-    .service-category:hover,
-    .service-item:hover,
-    .btn:hover {
-        transform: none !important;
-    }
-    
-    .btn:before {
-        display: none;
-    }
-    
-    /* Фиксы для тач-устройств */
-    .phone:first-of-type,
-    .btn,
-    .btn-large {
-        min-height: 44px;
-    }
-    
-    .form-group input,
-    .form-group textarea,
-    button {
-        min-height: 44px;
-    }
-}
-
-/* Анимация для появления номера */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ТЕЛЕФОНОВ */
-@media (max-width: 375px) {
-    .header {
-        padding: 8px 0;
-    }
-    
-    .logo img {
-        height: 40px;
-    }
-    
-    .phone {
-        font-size: 13px;
-        padding: 5px 8px;
-    }
-    
-    .hero {
-        padding: 30px 0 40px;
-    }
-    
-    .hero h1 {
-        font-size: 1.6rem;
-    }
-    
-    .hero-image img {
-        max-height: 200px;
-    }
-    
-    .btn-large {
-        padding: 15px 25px;
-        font-size: 0.95rem;
-    }
-    
-    .service-category {
-        padding: 20px;
-    }
-}
-
-/* ЛАНДШАФТНАЯ ОРИЕНТАЦИЯ */
-@media (max-width: 768px) and (orientation: landscape) {
-    .header {
-        padding: 8px 0;
-        min-height: 55px;
-    }
-    
-    .hero {
-        padding: 25px 0 35px;
-    }
-    
-    .hero-container {
-        flex-direction: row;
-        align-items: center;
-        gap: 20px;
-        text-align: left;
-    }
-    
-    .hero-image {
-        flex: 0 0 35%;
-        order: 0;
-        margin-bottom: 0;
-    }
-    
-    .hero-image img {
-        max-height: 180px;
-    }
-    
-    .hero-content {
-        flex: 1;
-    }
-    
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-    
-    .hero-features {
-        margin: 20px 0;
-    }
-}
-
-/* ВЫСОКИЕ ТЕЛЕФОНЫ */
-@media (max-width: 768px) and (min-height: 800px) {
-    .hero {
-        padding: 50px 0 60px;
-    }
-    
-    .hero-image img {
-        max-height: 250px;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
-}
-
-/* ПК И ПЛАНШЕТЫ */
-@media (min-width: 769px) {
-}
 /* ПОДВАЛ */
 .footer {
     background-color: var(--primary-blue);
@@ -912,39 +594,6 @@ body {
     width: 100%;
 }
 
-/* АДАПТИВНОСТЬ ПОДВАЛА */
-@media (max-width: 768px) {
-    .footer {
-        padding: 30px 0;
-    }
-    
-    .footer-disclaimer {
-        font-size: 0.85rem;
-        margin-bottom: 25px;
-        padding-bottom: 25px;
-    }
-    
-    .footer-info {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-    }
-    
-    .copyright {
-        font-size: 0.9rem;
-        order: 2;
-    }
-    
-    .footer-links {
-        order: 1;
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .footer-link {
-        font-size: 0.9rem;
-    }
-}
 /* МОДАЛЬНОЕ ОКНО */
 .modal {
     display: none;
@@ -1083,8 +732,255 @@ body {
     margin-bottom: 0;
 }
 
-/* АДАПТИВНОСТЬ МОДАЛЬНОГО ОКНА */
+/* АНИМАЦИЯ ДЛЯ ПОЯВЛЕНИЯ НОМЕРА */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ - КОМПАКТНАЯ ШАПКА */
 @media (max-width: 768px) {
+    /* КОМПАКТНАЯ ФИКСИРОВАННАЯ ШАПКА */
+    body {
+        padding-top: 50px; /* Отступ для fixed шапки */
+    }
+    
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px; /* Фиксированная компактная высота */
+        padding: 5px 0;
+        z-index: 2000;
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-container {
+        height: 100%;
+        padding: 0 10px;
+    }
+    
+    .logo img {
+        height: 35px; /* Уменьшенный логотип */
+        max-height: 40px;
+    }
+    
+    /* Прижимаем контакты к правому краю */
+    .header-contacts {
+        flex-grow: 0;
+    }
+    
+    .phone-numbers {
+        align-items: flex-end;
+    }
+    
+    .phone:first-of-type {
+        font-size: 13px; /* Уменьшенный текст */
+        padding: 4px 8px;
+        min-height: 32px;
+    }
+    
+    .phone i {
+        font-size: 11px; /* Уменьшенная иконка */
+    }
+    
+    /* Кнопка "ещё" - показываем только на телефонах */
+    .more-numbers.mobile-only {
+        display: inline-block !important;
+        font-size: 0.8rem; /* Уменьшенный текст */
+        color: var(--text-light);
+        margin-left: 0;
+        font-style: italic;
+        cursor: pointer;
+        padding: 3px 8px; /* Уменьшенный паддинг */
+        background: rgba(26, 54, 93, 0.05);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        margin-top: 3px;
+    }
+    
+    .more-numbers.mobile-only:hover {
+        background: rgba(26, 54, 93, 0.1);
+    }
+    
+    /* Второй номер - управляется через JavaScript */
+    .phone-secondary {
+        display: none !important;
+        margin-top: 6px;
+        background: rgba(26, 54, 93, 0.08) !important;
+        border-radius: 6px !important;
+        padding: 6px 10px !important;
+        animation: fadeIn 0.3s ease !important;
+        font-size: 12px;
+    }
+    
+    .phone-secondary.show {
+        display: flex !important;
+    }
+    
+    /* Контейнер для дополнительных контактов */
+    .additional-contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 3px;
+    }
+    
+    /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ - корректируем из-за фиксированной шапки */
+    .hero {
+        padding: 20px 0 30px;
+        min-height: auto;
+    }
+    
+    .hero-container {
+        gap: 15px;
+        margin-top: 0;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        margin-top: 0;
+        padding-top: 10px;
+    }
+    
+    .hero-image {
+        margin-top: 0;
+        margin-bottom: 10px;
+        order: -1;
+    }
+    
+    .hero-image img {
+        max-height: 200px;
+        width: auto;
+        margin: 0 auto;
+        transform: none;
+        border-radius: 12px;
+    }
+    
+    .hero h1 {
+        font-size: 1.7rem;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        line-height: 1.6;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .hero-features {
+        margin: 15px 0 20px;
+        padding: 15px;
+        text-align: left;
+    }
+    
+    .feature {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .btn-large {
+        padding: 14px 25px;
+        font-size: 0.95rem;
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+    
+    /* УСЛУГИ НА ТЕЛЕФОНАХ */
+    .services {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 35px;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-category {
+        padding: 20px;
+    }
+    
+    .service-item {
+        padding: 18px;
+    }
+    
+    .service-item h4 {
+        font-size: 1.05rem;
+    }
+    
+    /* ФОРМА НА ТЕЛЕФОНАХ */
+    .contact-form-section {
+        padding: 50px 0;
+    }
+    
+    .form-container {
+        grid-template-columns: 1fr;
+        padding: 25px 20px;
+        gap: 25px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 14px;
+        font-size: 15px;
+    }
+    
+    /* ПОДВАЛ НА ТЕЛЕФОНАХ */
+    .footer {
+        padding: 25px 0;
+    }
+    
+    .footer-disclaimer {
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .footer-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .copyright {
+        font-size: 0.85rem;
+        order: 2;
+    }
+    
+    .footer-links {
+        order: 1;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-link {
+        font-size: 0.85rem;
+    }
+    
+    /* МОДАЛЬНОЕ ОКНО НА ТЕЛЕФОНАХ */
     .modal {
         padding: 10px;
         align-items: center;
@@ -1092,15 +988,15 @@ body {
     
     .modal-content {
         width: 95%;
-        max-height: 90vh;
+        max-height: 85vh;
     }
     
     .modal-header {
-        padding: 20px;
+        padding: 15px 20px;
     }
     
     .modal-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .modal-body {
@@ -1112,12 +1008,145 @@ body {
     }
     
     .privacy-content h3 {
-        font-size: 1.2rem;
-        margin: 20px 0 12px;
+        font-size: 1.1rem;
+        margin: 18px 0 10px;
     }
     
     .privacy-content p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Отключаем сложные анимации на мобильных для производительности */
+    .hero-image:hover img,
+    .service-category:hover,
+    .service-item:hover,
+    .btn:hover {
+        transform: none !important;
+    }
+    
+    .btn:before {
+        display: none;
+    }
+    
+    /* Фиксы для тач-устройств */
+    .phone:first-of-type,
+    .btn,
+    .btn-large {
+        min-height: 40px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    button {
+        min-height: 40px;
+    }
+}
+
+/* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ТЕЛЕФОНОВ */
+@media (max-width: 375px) {
+    .header {
+        height: 45px; /* Еще компактнее */
+        padding: 4px 0;
+    }
+    
+    .logo img {
+        height: 32px;
+    }
+    
+    .phone:first-of-type {
+        font-size: 12px;
+        padding: 3px 6px;
+    }
+    
+    .more-numbers.mobile-only {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+    
+    body {
+        padding-top: 45px;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-image img {
+        max-height: 180px;
+    }
+    
+    .btn-large {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        max-width: 240px;
+    }
+    
+    .service-category {
+        padding: 18px;
+    }
+}
+
+/* ЛАНДШАФТНАЯ ОРИЕНТАЦИЯ */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header {
+        height: 45px;
+        padding: 4px 0;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    body {
+        padding-top: 45px;
+    }
+    
+    .hero {
+        padding: 15px 0 25px;
+    }
+    
+    .hero-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 15px;
+        text-align: left;
+    }
+    
+    .hero-image {
+        flex: 0 0 35%;
+        order: 0;
+        margin-bottom: 0;
+    }
+    
+    .hero-image img {
+        max-height: 150px;
+    }
+    
+    .hero-content {
+        flex: 1;
+    }
+    
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-features {
+        margin: 15px 0;
+    }
+}
+
+/* ВЫСОКИЕ ТЕЛЕФОНЫ */
+@media (max-width: 768px) and (min-height: 800px) {
+    .hero {
+        padding: 30px 0 40px;
+    }
+    
+    .hero-image img {
+        max-height: 220px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
     }
 }
 
@@ -1126,4 +1155,8 @@ body {
     .modal-content {
         max-height: 75vh;
     }
+}
+
+/* ПК И ПЛАНШЕТЫ */
+@media (min-width: 769px) {
 }
