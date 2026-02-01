@@ -282,101 +282,142 @@
             </div>
         </div>
     </div>
-
-    <script>
-    // ФУНКЦИОНАЛ КНОПКИ "ЕЩЁ" НА ТЕЛЕФОНАХ
-    document.addEventListener('DOMContentLoaded', function() {
-        const moreBtn = document.querySelector('.more-numbers.mobile-only');
-        const secondPhone = document.querySelector('.phone-secondary');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ЭЛЕМЕНТЫ ДЛЯ КНОПКИ "ЕЩЁ"
+    const moreBtn = document.querySelector('.more-numbers.mobile-only');
+    const secondPhone = document.querySelector('.phone-secondary');
+    const header = document.querySelector('.header');
+    
+    if (moreBtn && secondPhone) {
+        // ФУНКЦИЯ ПРОВЕРКИ МОБИЛЬНОГО УСТРОЙСТВА
+        const isMobile = () => window.innerWidth <= 768;
         
-        if (moreBtn && secondPhone) {
-            // Проверка мобильного устройства
-            const isMobile = () => window.innerWidth <= 768;
-            
-            // Изначальная настройка
+        // НАЧАЛЬНАЯ НАСТРОЙКА
+        function initContacts() {
             if (isMobile()) {
+                // На мобильных скрываем второй номер
                 secondPhone.style.display = 'none';
+                secondPhone.classList.remove('show');
+                moreBtn.textContent = 'ещё...';
+                header.classList.remove('fixed');
+            } else {
+                // На ПК показываем все
+                secondPhone.style.display = 'flex';
+                secondPhone.classList.add('show');
+                moreBtn.textContent = 'ещё...';
             }
+        }
+        
+        // ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ
+        initContacts();
+        
+        // КЛИК ПО КНОПКЕ "ЕЩЁ"
+        moreBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             
-            // Клик по кнопке "ещё"
-            moreBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                if (!isMobile()) return; // Работает только на мобильных
-                
-                if (secondPhone.style.display === 'none') {
-                    // Показываем номер
-                    secondPhone.style.display = 'flex';
+            if (!isMobile()) return;
+            
+            // ПЕРЕКЛЮЧАЕМ ВИДИМОСТЬ НОМЕРА
+            if (!secondPhone.classList.contains('show')) {
+                // ПОКАЗЫВАЕМ НОМЕР
+                secondPhone.style.display = 'flex';
+                setTimeout(() => {
                     secondPhone.classList.add('show');
-                    this.textContent = 'скрыть';
-                } else {
-                    // Скрываем номер
+                }, 10);
+                this.textContent = 'скрыть';
+                
+                // ДЕЛАЕМ ШАПКУ ФИКСИРОВАННОЙ
+                header.classList.add('fixed');
+            } else {
+                // СКРЫВАЕМ НОМЕР
+                secondPhone.classList.remove('show');
+                setTimeout(() => {
                     secondPhone.style.display = 'none';
-                    secondPhone.classList.remove('show');
-                    this.textContent = 'еще...';
-                }
-            });
-            
-            // При изменении размера окна
-            window.addEventListener('resize', function() {
-                if (isMobile()) {
-                    // На мобильных
-                    if (moreBtn.textContent === 'скрыть') {
-                        secondPhone.style.display = 'flex';
-                        secondPhone.classList.add('show');
-                    } else {
-                        secondPhone.style.display = 'none';
-                        secondPhone.classList.remove('show');
-                    }
-                } else {
-                    // На ПК - всегда показываем номер, скрываем кнопку
-                    secondPhone.style.display = 'flex';
-                    secondPhone.classList.remove('show');
-                    moreBtn.textContent = 'еще...';
-                }
-            });
-        }
+                }, 300);
+                this.textContent = 'ещё...';
+                
+                // УБИРАЕМ ФИКСАЦИЮ ШАПКИ
+                header.classList.remove('fixed');
+            }
+        });
         
-        // ФУНКЦИОНАЛ МОДАЛЬНОГО ОКНА ПОЛИТИКИ КОНФИДЕНЦИАЛЬНОСТИ
-        const privacyLinks = document.querySelectorAll('.privacy-link');
-        const modal = document.getElementById('privacy-modal');
-        const closeButtons = document.querySelectorAll('.modal-close, .btn-close-modal');
+        // ЗАКРЫТИЕ ПРИ КЛИКЕ ВНЕ ОБЛАСТИ
+        document.addEventListener('click', function(e) {
+            if (isMobile() && 
+                secondPhone.classList.contains('show') &&
+                !moreBtn.contains(e.target) && 
+                !secondPhone.contains(e.target)) {
+                
+                secondPhone.classList.remove('show');
+                setTimeout(() => {
+                    secondPhone.style.display = 'none';
+                }, 300);
+                moreBtn.textContent = 'ещё...';
+                header.classList.remove('fixed');
+            }
+        });
         
-        if (privacyLinks.length > 0 && modal) {
-            // Открытие модального окна
-            privacyLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.classList.add('show');
-                    document.body.style.overflow = 'hidden'; // Блокируем прокрутку страницы
-                });
+        // ЗАКРЫТИЕ ПРИ ПРОКРУТКЕ
+        window.addEventListener('scroll', function() {
+            if (isMobile() && secondPhone.classList.contains('show')) {
+                secondPhone.classList.remove('show');
+                setTimeout(() => {
+                    secondPhone.style.display = 'none';
+                }, 300);
+                moreBtn.textContent = 'ещё...';
+                header.classList.remove('fixed');
+            }
+        });
+        
+        // ПЕРЕИНИЦИАЛИЗАЦИЯ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ОКНА
+        window.addEventListener('resize', function() {
+            initContacts();
+        });
+    }
+    
+    // СУЩЕСТВУЮЩИЙ КОД ДЛЯ МОДАЛЬНОГО ОКНА
+    const privacyLinks = document.querySelectorAll('.privacy-link');
+    const modal = document.getElementById('privacy-modal');
+    const closeButtons = document.querySelectorAll('.modal-close, .btn-close-modal');
+    
+    if (privacyLinks.length > 0 && modal) {
+        // Открытие модального окна
+        privacyLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
             });
-            
-            // Закрытие модального окна
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    modal.classList.remove('show');
-                    document.body.style.overflow = ''; // Возвращаем прокрутку
-                });
+        });
+        
+        // Закрытие модального окна
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
             });
-            
-            // Закрытие по клику вне окна
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                    document.body.style.overflow = '';
-                }
-            });
-            
-            // Закрытие по ESC
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    modal.classList.remove('show');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-    });
-    </script>
+        });
+        
+        // Закрытие по клику вне окна
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+</script>
 </body>
 </html>
+
