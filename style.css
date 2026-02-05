@@ -99,6 +99,51 @@ body {
     font-size: 1rem;
 }
 
+/* Переключатель языков */
+.language-switcher {
+    display: flex;
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.lang-btn {
+    background: var(--light-blue);
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+    .lang-btn.active {
+        background: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+    }
+
+    .lang-btn:hover:not(.active) {
+        background: var(--white);
+        transform: translateY(-2px);
+    }
+
+/* На мобильных */
+@media (max-width: 768px) {
+    .language-switcher {
+        margin: 10px auto 0;
+        justify-content: center;
+        order: 3;
+        width: 100%;
+    }
+
+    .lang-btn {
+        padding: 8px 15px;
+        font-size: 0.95rem;
+    }
+}
+
 /* Скрыть "ещё..." на десктопе */
 .more-numbers.mobile-only {
     display: none;
@@ -551,7 +596,7 @@ body {
         font-size: 12px;
     }
     
-    /* Кнопка "ещё" - показываем только на телефонах */
+    /* Кнопка "ещё" - показывается только на телефонах */
     .more-numbers.mobile-only {
         display: inline-block !important;
         font-size: 0.85rem;
@@ -570,7 +615,7 @@ body {
         background: rgba(26, 54, 93, 0.1);
     }
     
-    /* Второй номер - управляется через JavaScript */
+    /* Второй номер - управляется через JavaScript в html */
     .phone-secondary {
         display: none !important;
         margin-top: 8px;
@@ -594,12 +639,12 @@ body {
     
     /* ГЛАВНЫЙ ЭКРАН НА ТЕЛЕФОНАХ */
     .hero {
-        padding: 15px 0 25px; /* Минимальные отступы сверху/снизу */
+        padding: 15px 0 25px; 
         min-height: auto;
     }
     
     .hero-container {
-        gap: 8px; /* Очень маленький gap между картинкой и текстом */
+        gap: 8px; 
         padding-top: 0;
         margin-top: 0;
         flex-direction: column;
@@ -613,62 +658,62 @@ body {
     
     .hero-image {
         margin-top: 0;
-        margin-bottom: 5px; /* Минимальный отступ под картинкой */
+        margin-bottom: 5px; 
         order: -1;
     }
     
     .hero-image img {
-        max-height: 180px; /* Компактная картинка */
+        max-height: 180px; 
         width: auto;
         margin: 0 auto;
         transform: none;
-        border-radius: 10px; /* Немного меньше скругление */
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Легкая тень */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Тень */
     }
     
     .hero h1 {
-        font-size: 1.7rem; /* Немного меньше размер */
-        margin-bottom: 4px; /* Минимальный отступ */
+        font-size: 1.7rem;
+        margin-bottom: 4px; /* Отступ */
         line-height: 1.2;
     }
     
     .hero-subtitle {
         font-size: 1rem;
-        margin-bottom: 6px; /* Минимальный отступ */
+        margin-bottom: 6px; 
         font-weight: 500;
     }
     
     .hero-description {
         font-size: 0.95rem;
-        margin-bottom: 10px; /* Минимальный отступ */
-        line-height: 1.4; /* Компактный межстрочный интервал */
+        margin-bottom: 10px;
+        line-height: 1.4;
         margin-left: auto;
         margin-right: auto;
     }
     
     .hero-features {
-        margin: 8px 0 10px; /* Очень маленькие отступы */
-        padding: 10px 12px; /* Минимальные внутренние отступы */
+        margin: 8px 0 10px;
+        padding: 10px 12px;
         text-align: left;
-        border-left: 3px solid var(--primary-blue); /* Тонкая линия */
+        border-left: 3px solid var(--primary-blue);
     }
     
     .feature {
         font-size: 0.9rem;
-        margin-bottom: 6px; /* Минимальный отступ между фичами */
-        gap: 8px; /* Маленький gap между иконкой и текстом */
+        margin-bottom: 6px; 
+        gap: 8px;
     }
     
     .feature i {
-        font-size: 1rem; /* Немного меньше иконки */
+        font-size: 1rem;
     }
     
     .btn-large {
-        padding: 12px 20px; /* Компактная кнопка */
+        padding: 12px 20px;
         font-size: 0.95rem;
         width: 100%;
-        max-width: 240px; /* Компактная ширина */
-        margin: 5px auto 0; /* Минимальный отступ сверху */
+        max-width: 240px; 
+        margin: 5px auto 0;
     }
     
     /* УСЛУГИ НА ТЕЛЕФОНАХ */
@@ -715,7 +760,7 @@ body {
         font-size: 16px;
     }
     
-    /* Отключаем сложные анимации на мобильных для производительности */
+    /* Отключаются анимации на мобильных для производительности */
     .hero-image:hover img,
     .service-category:hover,
     .service-item:hover,
@@ -756,11 +801,11 @@ body {
 /* ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ТЕЛЕФОНОВ */
 @media (max-width: 375px) {
     .hero {
-        padding: 10px 0 20px; /* Совсем минимальные отступы */
+        padding: 10px 0 20px; 
     }
     
     .hero-container {
-        gap: 5px; /* Минимальный отступ между картинкой и текстом */
+        gap: 5px; 
     }
     
     .hero-image {
@@ -768,7 +813,7 @@ body {
     }
     
     .hero-image img {
-        max-height: 160px; /* Еще меньше картинка */
+        max-height: 160px;
         border-radius: 8px;
     }
     
@@ -1147,12 +1192,11 @@ body {
     }
 }
 
-/* АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ ВЫСОКИХ ЭКРАНОВ */
+/* АДАПТИВНОСТЬ ДЛЯ СИЛЬНО ВЫСОКИХ ЭКРАНОВ */
 @media (min-height: 800px) {
     .modal-content {
         max-height: 75vh;
     }
 }
-
 
 
